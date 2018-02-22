@@ -1,0 +1,6 @@
+ansible multi -a "hostname"
+ansible multi -b -m yum -a "name=ntp state=present"
+ansible multi -b -m service -a "name=ntpd state=started enabled=yes"
+ansible multi -b -a "service ntpd stop"
+ansible multi -b -a "ntpdate -q 0.rhel.pool.ntp.org"
+ansible multi -b -a "service ntpd start"
